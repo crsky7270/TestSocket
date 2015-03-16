@@ -70,25 +70,25 @@ namespace SocketServer
       private void appserver_SessionClosed(BinaryAppSession session, CloseReason value)
       {
          session.Send("bye");
-         //throw new NotImplementedException();
       }
 
+      /// <summary>
+      /// 接收到新的消息
+      /// </summary>
+      /// <param name="session"></param>
+      /// <param name="requestinfo"></param>
       private void appserver_NewRequestReceived(BinaryAppSession session, BinaryRequestInfo requestinfo)
       {
-         //throw new NotImplementedException();
-         //this.RecListBox.Items.Add(requestinfo.Body.ToString());
 
       }
 
+      /// <summary>
+      /// Session Connected
+      /// </summary>
+      /// <param name="session"></param>
       private void appserver_NewSessionConnected(BinaryAppSession session)
       {
-         //session.Send("hello");
-         byte[] byt = { 0x01, 0x03, 0x00, 0x00, 0x00, 0x20, 0x44, 0x12 };
-
          _session = session;
-         session.Send(byt, 0, byt.Length);
-
-         //throw new NotImplementedException();
       }
 
       /// <summary>
@@ -98,21 +98,18 @@ namespace SocketServer
       /// <param name="e"></param>
       private void button2_Click(object sender, EventArgs e)
       {
-         //if (socket != null)
-         //{
-         //   socket.Close();
-         //   socket.Dispose();
-         //   this.button1.Enabled = true;
-         //}
          _appServer.Stop();
          this.button1.Enabled = true;
       }
 
+      /// <summary>
+      /// 测试读取指令
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void button3_Click(object sender, EventArgs e)
       {
-
          byte[] byt = { 0x01, 0x03, 0x00, 0x00, 0x00, 0x20, 0x44, 0x12 };
-
          _session.Send(byt, 0, byt.Length);
       }
    }
